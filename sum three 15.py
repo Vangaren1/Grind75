@@ -37,47 +37,25 @@ Below is the leetcode solution
 """
 
 class Solution:
-    sums = {}
-    def twoSum(self, numbers: List[int], target: int, skip, start) -> List[int]:
-        index = start
-        end = len(numbers) - 1
-        seen = set()
-        retList = []
-        if target in self.sums:
-            return self.sums[target]
-        while index < end:
-            if index == skip:
-                index += 1
-                continue
-            if end == skip:
-                end -= 1
-                continue            
-            tmp1 = numbers[index]
-            tmp2 = numbers[end]
-            s = tmp1 + tmp2 
-            self.sums[ s ] = (index, end)
-            if s == target:
-                tmp = (index, end)
-                if tmp not in seen:
-                    retList.append(tmp)
-                index += 1
-            elif s < target:
-                index += 1
-            else:
-                end -= 1
-        return retList
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        sortedList = nums.copy()
-        sortedList.sort()
-        seen = set()
-        for index in range(len(nums)):
-            target = sortedList[index] * -1
-            pairs = self.twoSum(sortedList, target, index, index)
-            if len(pairs) > 0:
-                p = [ (sortedList[index], sortedList[pair[0]], sortedList[pair[1]]) for pair in pairs ]
-                for n in p:
-                    seen.add(n)
-        return [ [s[0], s[1], s[2]] for s in seen]
+        nums.sort()
+        retVal = []
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i-1]:
+                continue
+            j, k = i + 1, len(nums) - 1
+            while j < k:
+                tmp = a + nums[j] + nums[k]
+                if tmp > 0:
+                    k -= 1 
+                elif tmp < 0:
+                    j += 1
+                else:
+                    retVal.append([a, nums[j], nums[k]])
+                    j += 1
+                    while j < k and nums[j] == nums[j-1]:
+                        j += 1
+        return retVal
     
 """
 Testing Below this
