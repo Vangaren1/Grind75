@@ -20,7 +20,7 @@ class Solution:
         res.append(newInterval)
         return res
 
-        
+
 """
 Testing Below this
 
@@ -31,27 +31,19 @@ if __name__ == "__main__":
     
     allPass = True
     errorMsg = "Value not correct, Value: {}"
-    
-    interval = [[1,3],[6,9]]
+
+    intervals = [[1,3],[6,9]]
     newInterval = [2,5]
-    Output= [[1,5],[6,9]]
-    
-    result1 = sol.insert(interval, newInterval)
+    Output = [[1,5],[6,9]]
+
+    result1 = sol.insert(intervals, newInterval)
     
     try:
-        assert result1 == Output, errorMsg.format(result1)
+        assert result1 == 5, errorMsg.format(result1)
     except Exception as e: 
         allPass = False
         print("first test failed: {}".format(e))
-        
-    intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
-    newInterval = [4,8]
-    output = [[1,2],[3,10],[12,16]]
-    
-    result = sol.insert(intervals, newInterval)
-
-    print(result)
-    
+ 
     if allPass:    
         print("Passes all test cases")
     
