@@ -31,7 +31,7 @@ if __name__ == "__main__":
     
     allPass = True
     errorMsg = "Value not correct, Value: {}"
-    
+
     intervals = [[1,3],[6,9]]
     newInterval = [2,5]
     Output = [[1,5],[6,9]]
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     except Exception as e: 
         allPass = False
         print("first test failed: {}".format(e))
-
+ 
     if allPass:    
         print("Passes all test cases")
     

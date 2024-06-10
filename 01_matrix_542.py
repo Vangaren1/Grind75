@@ -32,6 +32,7 @@ class Solution:
         
         
                 
+
 """
 Testing Below this
 
@@ -42,6 +43,7 @@ if __name__ == "__main__":
     
     allPass = True
     errorMsg = "Value not correct, Value: {}"
+
         
     # mat = [[0,0,0],[0,1,0],[0,0,0]]
     # Output= [[0,0,0],[0,1,0],[0,0,0]]
@@ -65,7 +67,6 @@ if __name__ == "__main__":
     except Exception as e: 
         allPass = False
         print("first test failed: {}".format(e))
-
 
     if allPass:    
         print("Passes all test cases")
