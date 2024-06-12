@@ -16,7 +16,7 @@ class Solution:
         }
         while len(tokens) > 0:
             tmp = tokens.pop(0)
-            if tmp.isnumeric() or (tmp[0]=='-' and tmp[1:].isdigit()):
+            if tmp not in "+-*/":
                 stack.insert(0,int(tmp))
             else:
                 a = stack.pop(0)
