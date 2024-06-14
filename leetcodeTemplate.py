@@ -18,11 +18,11 @@ if __name__ == "__main__":
     
     allPass = True
     errorMsg = "Value not correct, Value: {}"
-    
-    result1 = sol
+    expected = 5
+    result = sol
     
     try:
-        assert result1 == 5, errorMsg.format(result1)
+        assert result == expected, errorMsg.format(result)
     except Exception as e: 
         allPass = False
         print("first test failed: {}".format(e))
