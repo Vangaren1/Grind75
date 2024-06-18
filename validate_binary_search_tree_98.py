@@ -18,14 +18,16 @@ class Solution:
             if root:
                 traverse(root.left)
                 order.append(root.val)
+                if len(order) > 1 and order[-2] >= order[-1]:
+                    raise Exception(False)
                 traverse(root.right)
-        traverse(root)
-        if len(order) <= 1:
             return True
-        for index in range(1, len(order)):
-            if order[index - 1] >= order[index]:
-                return False
-        return True
+        try:
+            check = traverse(root)
+        except:
+            return False
+        return check
+
         
 
         
