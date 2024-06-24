@@ -4,11 +4,29 @@ from typing import List, Optional
 Below is the leetcode solution
 
 """
-
+from itertools import combinations_with_replacement
 class Solution:
-    pass 
-    
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
 
+        def dfs(i, curr, total):
+            if total == target:
+                res.append( curr[:])
+                return 
+            if i >= len(candidates) or total > target:
+                return 
+            
+            curr.append(candidates[i])
+            dfs(i, curr, total + candidates[i])
+            curr.pop()
+            dfs(i + 1, curr, total )
+        
+        dfs(0, [], 0)
+
+        return res
+
+
+        
 
 
 
@@ -21,8 +39,6 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-
-null = None
 
 def deserialize(treeList):
     if len(treeList) == 0:
@@ -53,9 +69,13 @@ if __name__ == "__main__":
     allPass = True
     errorMsg = "Value not correct, Value: {}"
 
+    null = None
+
+    candidates = [8,10,9,32,25,27,22,38,15,5,3,26,30,11,21,36,37]
+    target = 39
 
     expected = 5
-    result = sol
+    result = sol.combinationSum(candidates, target)
     
     try:
         assert result == expected, errorMsg.format(result)

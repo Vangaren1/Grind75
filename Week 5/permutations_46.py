@@ -6,9 +6,26 @@ Below is the leetcode solution
 """
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        pass 
-    
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        ret = []
+        seen = set()
+        if len(nums) == 1:
+            return [nums]
+        def recursive(remaining):
+            if remaining == []:
+                return 
+            if len(remaining) == 1:
+                return remaining
+            tmp = []
+            for i in range(len(remaining)):
+                val = remaining[i]
+                rem = recursive(remaining[:i] + remaining[i+1:])
+                for r in rem:
+                    r = [r] if type(r) != list else r
+                    r = [val] + r
+                    tmp.append(r)
+            return tmp
+        return recursive(nums)
 
 
 
@@ -22,6 +39,8 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
+null = None
 
 def deserialize(treeList):
     if len(treeList) == 0:
@@ -52,9 +71,9 @@ if __name__ == "__main__":
     allPass = True
     errorMsg = "Value not correct, Value: {}"
 
-
+    nums = [1]
     expected = 5
-    result = sol
+    result = sol.permute(nums)
     
     try:
         assert result == expected, errorMsg.format(result)
